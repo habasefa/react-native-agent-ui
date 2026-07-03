@@ -1,0 +1,77 @@
+# react-native-agent-ui
+
+**The most complete AI agent UI for React Native.**
+
+A framework for building production-ready AI agent experiences in React Native apps — instantly. Drop in prebuilt, composable UI, choose full-screen or an in-app bottom sheet, and wire it to your backend with minimal setup.
+
+## Overview
+
+`react-native-agent-ui` gives you a full agent chat interface out of the box: native and streaming markdown, generative UI, conversation threads with auto-generated titles, suggested prompts and follow-ups, full-screen or bottom-sheet presentation, tool execution, human-in-the-loop approval flows, file attachments, a highly customizable input, @mention support, and a theme system you can match to your brand. It is built on the [Vercel AI SDK](https://sdk.vercel.ai/) and designed for real mobile apps, not web wrappers.
+
+## Features
+
+### Agent & streaming
+
+- **AI SDK integration** — Works with the Vercel AI SDK for model calls, streaming, and tool orchestration
+- **Server-Sent Events (SSE)** — Real-time token streaming for responsive, live agent replies
+- **Streaming markdown** — Renders markdown incrementally as tokens arrive — headings, lists, links, and code blocks update live without layout jumps
+- **Tool calls** — Render tool invocations, arguments, and results in the conversation
+- **Human-in-the-loop (HITL)** — Pause for user approval before sensitive or high-impact tool actions
+- **Generative UI** — Render rich native components from agent and tool output: cards, lists, forms, charts, and custom widgets — not just text
+
+### Content & conversation
+
+- **Native markdown** — Fast, native markdown rendering with code blocks, syntax highlighting, tables, and copy actions — no WebView required
+- **Threads** — Multi-conversation support with thread list, switching, and persistence
+- **Thread title generation** — Automatically generate concise titles for new threads from the first message or conversation context
+- **Suggested prompts** — Starter chips and empty-state prompts to help users begin quickly
+- **Follow-ups** — Contextual “Ask next…” suggestions after each agent reply to keep the conversation flowing
+
+### Input & attachments
+
+- **File attachments** — Send and display images, documents, and other media in chat
+- **Customizable input** — Compose and style the chat input your way: placeholders, actions, layouts, validation, and custom controls
+- **Mentions** — @mention users, agents, tools, or context sources with autocomplete and rich inline rendering
+
+### Layout & theming
+
+- **Full-screen mode** — Dedicated agent chat screen for deep, focused conversations
+- **Bottom sheet** — Modern in-screen bottom sheet UI to talk to the agent without leaving the current screen; swipe to expand, dismiss, or snap to half-height
+- **Themeable components** — Customize colors, typography, spacing, and component variants to fit your app
+
+## Quick start
+
+```bash
+npm install react-native-agent-ui
+# or
+yarn add react-native-agent-ui
+```
+
+```tsx
+import { AgentChat, AgentSheet } from 'react-native-agent-ui';
+
+// Full-screen agent chat with threads and suggested prompts
+export function ChatScreen() {
+  return (
+    <AgentChat
+      api="/api/chat"
+      theme={yourTheme}
+      suggestedPrompts={['Summarize this', 'Draft a reply', 'Explain step by step']}
+    />
+  );
+}
+
+// In-screen bottom sheet — agent stays on top of your existing UI
+export function HomeScreen() {
+  return (
+    <>
+      {/* your app content */}
+      <AgentSheet api="/api/chat" theme={yourTheme} />
+    </>
+  );
+}
+```
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
